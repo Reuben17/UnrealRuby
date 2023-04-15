@@ -15,12 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\test.h">
+    <ClInclude Include="src\UnrealRuby\Core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UnrealRuby\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UnrealRuby.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UnrealRuby\Entrypoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\test.cpp">
+    <ClCompile Include="src\UnrealRuby\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
