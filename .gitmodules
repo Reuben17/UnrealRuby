@@ -1,0 +1,3 @@
+[submodule "UnrealRuby/vendor/spdlog"]
+	path = UnrealRuby/vendor/spdlog
+	url = https://github.com/gabime/spdlog
