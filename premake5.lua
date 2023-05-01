@@ -10,6 +10,12 @@ workspace "UnrealRuby"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories raltive to root folder (solution directory)
+IncludeDir ={}
+IncludeDir["GLFW"] = "UnrealRuby/vendor/GLFW/include"
+
+include "UnrealRuby/vendor/GLFW"
+
 project "UnrealRuby"
 	location "UnrealRuby"
 	kind "SharedLib"
@@ -17,6 +23,9 @@ project "UnrealRuby"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "urpch.h"
+	pchsource "UnrealRuby/src/urpch.cpp"
 
 	files
 	{
@@ -27,7 +36,14 @@ project "UnrealRuby"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 filter "system:windows"

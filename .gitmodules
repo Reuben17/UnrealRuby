@@ -1,9 +1,6 @@
 [submodule "UnrealRuby/vendor/spdlog"]
 	path = UnrealRuby/vendor/spdlog
 	url = https://github.com/gabime/spdlog
-[submodule "UnrealRuby/vendor/GFLW"]
-	path = UnrealRuby/vendor/GFLW
-	url = https://github.com/Reuben17/glfw
 [submodule "UnrealRuby/vendor/GLFW"]
 	path = UnrealRuby/vendor/GLFW
 	url = https://github.com/Reuben17/glfw

@@ -1,9 +1,6 @@
 #pragma once
-
+#include "urpch.h"
 #include "UnrealRuby/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace UnrealRuby 
 {

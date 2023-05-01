@@ -1,4 +1,5 @@
-  #include "Log.h"
+#include "urpch.h"
+#include "Log.h"
 
 
 namespace UnrealRuby

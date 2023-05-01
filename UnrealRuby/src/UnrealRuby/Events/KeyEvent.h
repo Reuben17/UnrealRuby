@@ -1,8 +1,6 @@
 #pragma once
-
+#include "urpch.h"
 #include "Event.h"
-#include <sstream>
-
 
 namespace UnrealRuby {
 	class UNREALRUBY_API KeyEvent : public Event
