@@ -4,6 +4,9 @@
     <Filter Include="UnrealRuby">
       <UniqueIdentifier>{4E13C918-3ACB-0A66-A3D2-E3C18FA9A556}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UnrealRuby\Events">
+      <UniqueIdentifier>{723BFAE6-DE51-F87C-27C9-839E931EC904}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\UnrealRuby.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\UnrealRuby\Entrypoint.h">
       <Filter>UnrealRuby</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UnrealRuby\Events\ApplicationEvent.h">
+      <Filter>UnrealRuby\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UnrealRuby\Events\Event.h">
+      <Filter>UnrealRuby\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UnrealRuby\Events\KeyEvent.h">
+      <Filter>UnrealRuby\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UnrealRuby\Events\MouseEvent.h">
+      <Filter>UnrealRuby\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\UnrealRuby\Log.h">
       <Filter>UnrealRuby</Filter>

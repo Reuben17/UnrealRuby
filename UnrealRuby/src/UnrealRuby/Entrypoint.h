@@ -7,8 +7,8 @@ extern UnrealRuby::Application* UnrealRuby::CreateApplication();
 int main(int argc,char** argv)
 {
 	UnrealRuby::Log::Init();
-	UR_CORE_WARN("Initialzied!");
-	UR_ERROR("Initialzied!");
+	UR_CORE_WARN("Initialized!");
+	UR_ERROR("Initialized!");
 
 	auto app = UnrealRuby::CreateApplication();
 	app->Run();

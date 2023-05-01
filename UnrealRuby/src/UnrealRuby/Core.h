@@ -10,3 +10,4 @@
 	#error Unreal Ruby only supports Windows!
 #endif //  UR_PLATFORM_WINDOWS
 
+#define BIT(x) (1<<x)
