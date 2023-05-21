@@ -1,7 +1,8 @@
 #pragma once
 
 #include "UnrealRuby/Window.h"
-#include "GLFW/glfw3.h"
+
+#include <GLFW/glfw3.h>
 
 namespace UnrealRuby {
 
@@ -39,6 +40,7 @@ namespace UnrealRuby {
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
+		inline virtual void* GetNativeWindow() const { return m_Window; }
 	};
 
 }

@@ -54,4 +54,19 @@ namespace UnrealRuby {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
+	class UNREALRUBY_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(int keycode)
+			:KeyEvent(keycode) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "Key Typed Event: " << m_keycode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
 }

@@ -1,5 +1,6 @@
 workspace "UnrealRuby"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations 
 	{
@@ -13,13 +14,24 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories raltive to root folder (solution directory)
 IncludeDir ={}
 IncludeDir["GLFW"] = "UnrealRuby/vendor/GLFW/include"
+IncludeDir["Glad"] = "UnrealRuby/vendor/Glad/include"
+IncludeDir["ImGui"] = "UnrealRuby/vendor/imgui"
+IncludeDir["glm"] = "UnrealRuby/vendor/glm"
 
-include "UnrealRuby/vendor/GLFW"
+--group "Dependancies"
+	include "UnrealRuby/vendor/GLFW"
+	include "UnrealRuby/vendor/Glad"
+	include "UnrealRuby/vendor/imgui"
+
+--group ""
+
+
 
 project "UnrealRuby"
 	location "UnrealRuby"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -37,47 +49,56 @@ project "UnrealRuby"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
 filter "system:windows"
 	cppdialect "C++17"
-	staticruntime "On"
 	systemversion "latest"
 
 	defines
 	{
 		"UR_PLATFORM_WINDOWS",
-		"UR_BUILD_DLL"
+		"UR_BUILD_DLL",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	postbuildcommands
 	{
-		("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+		("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 	}
 
 	filter "configurations:Debug"
 		defines "UR_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "UR_RELEASE"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "UR_DIST"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -91,7 +112,8 @@ project "Sandbox"
 	includedirs
 	{
 		"UnrealRuby/vendor/spdlog/include",
-		"UnrealRuby/src"
+		"UnrealRuby/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -101,7 +123,6 @@ project "Sandbox"
 
 filter "system:windows"
 	cppdialect "C++17"
-	staticruntime "On"
 	systemversion "latest"
 
 	defines
@@ -111,12 +132,15 @@ filter "system:windows"
 
 	filter "configurations:Debug"
 		defines "UR_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "UR_RELEASE"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "UR_DIST"
+		runtime "Release"
 		optimize "On"

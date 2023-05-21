@@ -79,11 +79,11 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>urpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>UR_PLATFORM_WINDOWS;UR_BUILD_DLL;UR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UR_PLATFORM_WINDOWS;UR_BUILD_DLL;GLFW_INCLUDE_NONE;UR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -94,7 +94,7 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\UnrealRuby\UnrealRuby.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\UnrealRuby\UnrealRuby.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\UnrealRuby\UnrealRuby.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\UnrealRuby\UnrealRuby.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\UnrealRuby\UnrealRuby.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\UnrealRuby\UnrealRuby.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\UnrealRuby\UnrealRuby.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -102,14 +102,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>urpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>UR_PLATFORM_WINDOWS;UR_BUILD_DLL;UR_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UR_PLATFORM_WINDOWS;UR_BUILD_DLL;GLFW_INCLUDE_NONE;UR_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -121,7 +121,7 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\UnrealRuby\UnrealRuby.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\UnrealRuby\UnrealRuby.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\UnrealRuby\UnrealRuby.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\UnrealRuby\UnrealRuby.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\UnrealRuby\UnrealRuby.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\UnrealRuby\UnrealRuby.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\UnrealRuby\UnrealRuby.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -129,14 +129,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>urpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>UR_PLATFORM_WINDOWS;UR_BUILD_DLL;UR_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UR_PLATFORM_WINDOWS;UR_BUILD_DLL;GLFW_INCLUDE_NONE;UR_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -148,26 +148,39 @@
       <ImportLibrary>..\bin\Dist-windows-x86_64\UnrealRuby\UnrealRuby.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\UnrealRuby\UnrealRuby.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\UnrealRuby\UnrealRuby.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\UnrealRuby\UnrealRuby.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\UnrealRuby\UnrealRuby.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\UnrealRuby\UnrealRuby.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\UnrealRuby\UnrealRuby.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\UnrealRuby.h" />
     <ClInclude Include="src\UnrealRuby\Application.h" />
     <ClInclude Include="src\UnrealRuby\Core.h" />
-    <ClInclude Include="src\UnrealRuby\Entrypoint.h" />
+    <ClInclude Include="src\UnrealRuby\EntryPoint.h" />
     <ClInclude Include="src\UnrealRuby\Events\ApplicationEvent.h" />
     <ClInclude Include="src\UnrealRuby\Events\Event.h" />
     <ClInclude Include="src\UnrealRuby\Events\KeyEvent.h" />
     <ClInclude Include="src\UnrealRuby\Events\MouseEvent.h" />
+    <ClInclude Include="src\UnrealRuby\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\UnrealRuby\Input.h" />
+    <ClInclude Include="src\UnrealRuby\KeyCodes.h" />
+    <ClInclude Include="src\UnrealRuby\Layer.h" />
+    <ClInclude Include="src\UnrealRuby\LayerStack.h" />
     <ClInclude Include="src\UnrealRuby\Log.h" />
+    <ClInclude Include="src\UnrealRuby\MouseButtonCodes.h" />
     <ClInclude Include="src\UnrealRuby\Window.h" />
     <ClInclude Include="src\urpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\UnrealRuby\Application.cpp" />
+    <ClCompile Include="src\UnrealRuby\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\UnrealRuby\Layer.cpp" />
+    <ClCompile Include="src\UnrealRuby\LayerStack.cpp" />
     <ClCompile Include="src\UnrealRuby\Log.cpp" />
     <ClCompile Include="src\urpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -176,6 +189,12 @@
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
       <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\Glad\Glad.vcxproj">
+      <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

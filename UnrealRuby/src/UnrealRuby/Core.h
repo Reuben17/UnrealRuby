@@ -10,7 +10,11 @@
 	#error Unreal Ruby only supports Windows!
 #endif //  UR_PLATFORM_WINDOWS
 
-#ifdef UR_ENABLE_ASSERTS
+#ifdef UR_DEBUG
+#define UR_ENABLE_ASSERTS
+#endif
+
+#ifdef UR_ENABLE_ASSERTS 
 	#define UR_ASSERT(x, ...) {if(!(x)) {UR_ERROR("Assertion Failed: {0}",__VA_ARGS__); __debugbreak();}} 
 	#define UR_CORE_ASSERT(x, ...) {if(!(x)) {UR_CORE_ERROR("Assertion Failed: {0}",__VA_ARGS__); __debugbreak();}}
 #else
@@ -19,3 +23,5 @@
 #endif
 
 #define BIT(x) (1<<x)
+
+#define UR_BIND_EVENT_FN(fn) std::bind(&fn,this,std::placeholders::_1) 
