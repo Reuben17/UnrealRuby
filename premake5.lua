@@ -113,6 +113,7 @@ project "Sandbox"
 	{
 		"UnrealRuby/vendor/spdlog/include",
 		"UnrealRuby/src",
+		"UnrealRuby/vendor",
 		"%{IncludeDir.glm}"
 	}
 

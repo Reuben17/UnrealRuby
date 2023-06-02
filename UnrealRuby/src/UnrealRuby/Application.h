@@ -6,12 +6,15 @@
 #include "UnrealRuby/Events/Event.h"
 #include "UnrealRuby/Events/ApplicationEvent.h"
 
+#include "UnrealRuby/ImGui/ImGuiLayer.h"
 
 namespace UnrealRuby {
 	class UNREALRUBY_API Application
 	{
 	private:
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
+
 		bool m_Running = true;
 
 		bool OnWindowClose(WindowCloseEvent& e);

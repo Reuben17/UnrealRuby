@@ -79,7 +79,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>urpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>UR_PLATFORM_WINDOWS;UR_BUILD_DLL;GLFW_INCLUDE_NONE;UR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API= __declspec(dllexport);UR_PLATFORM_WINDOWS;UR_BUILD_DLL;GLFW_INCLUDE_NONE;UR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -152,7 +152,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\UnrealRuby.h" />
@@ -174,10 +173,10 @@
     <ClInclude Include="src\urpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\UnrealRuby\Application.cpp" />
+    <ClCompile Include="src\UnrealRuby\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\UnrealRuby\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\UnrealRuby\Layer.cpp" />
     <ClCompile Include="src\UnrealRuby\LayerStack.cpp" />
