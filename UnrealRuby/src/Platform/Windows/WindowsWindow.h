@@ -1,6 +1,7 @@
 #pragma once
 
 #include "UnrealRuby/Window.h"
+#include "UnrealRuby/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -14,6 +15,8 @@ namespace UnrealRuby {
 
 	private:
 		GLFWwindow* m_Window;
+
+		GraphicsContext* m_Context;
 
 		struct WindowData 
 		{

@@ -1,11 +1,17 @@
 #pragma once
 
+#include <memory>  
+
 #ifdef  UR_PLATFORM_WINDOWS
-	#ifdef UR_BUILD_DLL
+#if UR_DYNAMIC_LINK  
+	#ifdef UR_BUILD_DLL 
 		#define UNREALRUBY_API __declspec(dllexport)
 	#else
 		#define UNREALRUBY_API __declspec(dllimport)
 	#endif // 
+#else
+#define UNREALRUBY_API
+#endif
 #else
 	#error Unreal Ruby only supports Windows!
 #endif //  UR_PLATFORM_WINDOWS
@@ -25,3 +31,13 @@
 #define BIT(x) (1<<x)
 
 #define UR_BIND_EVENT_FN(fn) std::bind(&fn,this,std::placeholders::_1) 
+
+namespace UnrealRuby {
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+
+}

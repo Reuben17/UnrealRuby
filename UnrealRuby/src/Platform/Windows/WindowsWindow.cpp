@@ -5,8 +5,7 @@
 #include "UnrealRuby/Events/KeyEvent.h"
 #include "UnrealRuby/Events/MouseEvent.h"
 
-#include <glad/glad.h>
-
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace UnrealRuby {
 
@@ -51,9 +50,10 @@ namespace UnrealRuby {
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		UR_CORE_ASSERT(status, "Failed to initialize Glad!");
+		
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -157,7 +157,7 @@ namespace UnrealRuby {
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
@@ -166,6 +166,7 @@ namespace UnrealRuby {
 			glfwSwapInterval(1);
 		else
 			glfwSwapInterval(0);
+
 		m_Data.VSync = enabled;
 	}
 

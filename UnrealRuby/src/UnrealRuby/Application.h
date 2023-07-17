@@ -7,6 +7,7 @@
 #include "UnrealRuby/Events/ApplicationEvent.h"
 
 #include "UnrealRuby/ImGui/ImGuiLayer.h"
+#include "UnrealRuby/Core/Timestep.h"
 
 namespace UnrealRuby {
 	class UNREALRUBY_API Application
@@ -20,6 +21,8 @@ namespace UnrealRuby {
 		bool OnWindowClose(WindowCloseEvent& e);
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
+
+		float m_LastFrameTime = 0.0f;
 
 	public:
 		Application();

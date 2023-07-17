@@ -1,6 +1,7 @@
 #pragma once
 
 #include "UnrealRuby/Core.h"
+#include "UnrealRuby/Core/Timestep.h"
 #include "Events/Event.h"
 
 namespace UnrealRuby {
@@ -16,7 +17,7 @@ namespace UnrealRuby {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

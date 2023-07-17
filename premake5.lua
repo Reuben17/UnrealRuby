@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "UnrealRuby/vendor/GLFW/include"
 IncludeDir["Glad"] = "UnrealRuby/vendor/Glad/include"
 IncludeDir["ImGui"] = "UnrealRuby/vendor/imgui"
 IncludeDir["glm"] = "UnrealRuby/vendor/glm"
+IncludeDir["stb_image"] = "UnrealRuby/vendor/stb_image"
 
 --group "Dependancies"
 	include "UnrealRuby/vendor/GLFW"
@@ -29,9 +30,10 @@ IncludeDir["glm"] = "UnrealRuby/vendor/glm"
 
 project "UnrealRuby"
 	location "UnrealRuby"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -42,9 +44,18 @@ project "UnrealRuby"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.ini"
 	}
 
+	defines	
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+	
 	includedirs
 	{
 		"%{prj.name}/src",
@@ -52,7 +63,8 @@ project "UnrealRuby"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links
@@ -64,7 +76,6 @@ project "UnrealRuby"
 	}
 
 filter "system:windows"
-	cppdialect "C++17"
 	systemversion "latest"
 
 	defines
@@ -74,31 +85,27 @@ filter "system:windows"
 		"GLFW_INCLUDE_NONE"
 	}
 
-	postbuildcommands
-	{
-		("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-	}
-
 	filter "configurations:Debug"
 		defines "UR_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "UR_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "UR_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -123,7 +130,6 @@ project "Sandbox"
 	}
 
 filter "system:windows"
-	cppdialect "C++17"
 	systemversion "latest"
 
 	defines
@@ -134,14 +140,14 @@ filter "system:windows"
 	filter "configurations:Debug"
 		defines "UR_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "UR_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "UR_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
